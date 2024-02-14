@@ -28,6 +28,7 @@ var connected_rooms: Array[RoomConnection] = []
 func _init():
 	max_connection_count = get_init_max_conn_count()
 	type = get_init_room_type()
+
 	
 func get_init_max_conn_count():
 	var num = randf()
@@ -59,3 +60,4 @@ func get_init_room_type() -> String:
 func add_connection(room: Room, direction: int) -> int:
 	connected_rooms.append(RoomConnection.new(room, direction))
 	return max_connection_count - connected_rooms.size()
+

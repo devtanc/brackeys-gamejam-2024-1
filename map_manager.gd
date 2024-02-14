@@ -24,7 +24,7 @@ class Map:
 		for i in height:
 			rows.append(Row.new(width, room_chance))
 		pass
-	
+
 	func get_all_rooms() -> Array[Room]:
 		var rooms: Array[Room] = []
 		for row in rows:
@@ -116,4 +116,4 @@ func generate_map(width: int, height: int):
 		rooms.erase(room_conn.room)
 	
 	map.set_start_room(rooms[randi_range(0, rooms.size() - 1)])
-	
+
