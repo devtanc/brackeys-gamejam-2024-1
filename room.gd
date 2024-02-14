@@ -24,6 +24,8 @@ class RoomConnection:
 var max_connection_count: int = 0
 var type: String = "none"
 var connected_rooms: Array[RoomConnection] = []
+var row: int = 0
+var col: int = 0
 
 func _init():
 	max_connection_count = get_init_max_conn_count()

@@ -11,3 +11,6 @@ RoomScene = ExtResource("2_r1ck3")
 [node name="MapManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_wakps")
+
+[node name="RoomDisplay" type="Node2D" parent="."]
+unique_name_in_owner = true

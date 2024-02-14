@@ -5,6 +5,7 @@ extends Node
 @export var RoomScene:PackedScene
 
 @onready var map_manager = %MapManager
+@onready var room_display = %RoomDisplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +19,7 @@ func render_map(manager: MapManager):
 			if room == null:
 				continue
 			var room_ui = RoomScene.instantiate()
-			add_child(room_ui)
+			room_display.add_child(room_ui)
 			room_ui.global_position.x = col * 300
 			room_ui.global_position.y = row * 300
-			room_ui.set_text(room.type)
+			room_ui.set_text(room.type, room.row, room.col)
