@@ -32,7 +32,7 @@ class Map:
 		return rooms
 	
 	func set_start_room(room):
-		room.type = "start"
+		room.set_type("start")
 		start_room = room
 
 var map: Map
@@ -46,7 +46,7 @@ func generate_map(width: int, height: int):
 	# make list of rooms with # of connections
 	var rooms: Array[Room] = map.get_all_rooms()
 	
-	while rooms.size():
+	while rooms.size() > 1:
 		# pick random room to connect to any other random room
 		var safesize = rooms.size() - 1
 		var room1 = rooms[randi_range(0, safesize)]
@@ -75,19 +75,21 @@ func generate_map(width: int, height: int):
 	if possible_shadow_rooms.size() == 0:
 		possible_shadow_rooms = nonerooms.filter(func(room): return room.connected_rooms.size() >= 2)
 	var shadowrealm = possible_shadow_rooms[0]
-	shadowrealm.type = "shadow"
+	shadowrealm.set_type("shadow")
 	# make all connections one-way towards the shadow realm
 	for conn in shadowrealm.connected_rooms:
 		conn.direction = 1
-	shadowrealm.connected_rooms = []
+	shadowrealm.connected_rooms.clear()
 	rooms.erase(shadowrealm)
 	
 	# add end
 	var end_candidates = nonerooms.filter(func(room): return room.connected_rooms.size() == 1)
 	if end_candidates.size() == 0:
 		end_candidates = nonerooms.filter(func(room): return room.connected_rooms.size() == 2)
+	if end_candidates.size() == 0:
+		end_candidates = nonerooms.filter(func(room): return room.connected_rooms.size() > 2)
 	var endroom = end_candidates[0]
-	endroom.type = "end"
+	endroom.set_type("end")
 	# ensure there is a 2-way connection to this room
 	# can't be a one-way out of it
 	endroom.connected_rooms[0].direction = 2
