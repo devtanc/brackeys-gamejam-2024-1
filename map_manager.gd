@@ -7,11 +7,14 @@ class_name MapManager
 class Row:
 	var rooms: Array[Room] = []
 	
-	func _init(count: int, room_chance: float):
+	func _init(count: int, room_chance: float, row: int):
 		for i in count:
 			var chance = randf()
 			if chance < room_chance:
-				rooms.append(Room.new())
+				var room = Room.new()
+				room.row = row
+				room.col = i
+				rooms.append(room)
 			else:
 				rooms.append(null)
 		pass
@@ -22,7 +25,7 @@ class Map:
 	
 	func _init(width: int, height: int, room_chance: float):
 		for i in height:
-			rows.append(Row.new(width, room_chance))
+			rows.append(Row.new(width, room_chance, i))
 		pass
 
 	func get_all_rooms() -> Array[Room]:
