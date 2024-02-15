@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d08siwa6o0gcd"]
+[gd_scene load_steps=5 format=3 uid="uid://d08siwa6o0gcd"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8q4vk"]
 [ext_resource type="Script" path="res://map_manager.gd" id="1_wakps"]
 [ext_resource type="PackedScene" uid="uid://ddlmmhque2q7j" path="res://room.tscn" id="2_r1ck3"]
+[ext_resource type="Script" path="res://RoomDisplay.gd" id="4_jodcv"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_8q4vk")
@@ -14,3 +15,4 @@ script = ExtResource("1_wakps")
 
 [node name="RoomDisplay" type="Node2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("4_jodcv")

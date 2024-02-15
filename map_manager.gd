@@ -2,7 +2,7 @@ extends Node
 class_name MapManager
 
 @export var room_chance: float = 0.75
-@export var one_way_chance: float = 0.8
+@export var one_way_chance: float = 0.2
 
 class Row:
 	var rooms: Array[Room] = []
