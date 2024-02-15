@@ -3,6 +3,7 @@ extends Node
 @export var width = 5
 @export var height = 5
 @export var RoomScene:PackedScene
+@export var spacing: int = 300
 
 @onready var map_manager = %MapManager
 @onready var room_display = %RoomDisplay
@@ -18,8 +19,11 @@ func render_map(manager: MapManager):
 			var room = manager.map.rows[row].rooms[col]
 			if room == null:
 				continue
-			var room_ui = RoomScene.instantiate()
-			room_display.add_child(room_ui)
-			room_ui.global_position.x = col * 300
-			room_ui.global_position.y = row * 300
-			room_ui.set_text(room.type, room.row, room.col)
+			var room_sprite = RoomScene.instantiate()
+			room_display.add_child(room_sprite)
+			room_sprite.global_position.x = col * spacing
+			room_sprite.global_position.y = row * spacing
+			room_sprite.set_z_index(-1)
+			room_sprite.set_text(room.type, room.row, room.col)
+	
+	room_display.set_map(manager, spacing)
