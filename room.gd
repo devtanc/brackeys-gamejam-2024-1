@@ -33,16 +33,14 @@ func _init():
 	
 func get_init_max_conn_count():
 	var num = randf()
-	if num < 0.25:
+	if num < 0.40:
 		return 2
-	elif num < 0.50:
-		return 3
-	elif num < 0.65:
-		return 1
 	elif num < 0.80:
-		return 4
+		return 3
+	elif num < 0.90:
+		return 1
 	else:
-		return 5
+		return 4
 
 func get_init_room_type() -> String:
 	var num = randf()
