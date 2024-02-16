@@ -86,7 +86,7 @@ func generate_map(width: int, height: int):
 	rooms.erase(shadowrealm)
 	
 	# add end
-	var end_candidates = nonerooms.filter(func(room): return room.connected_rooms.size() == 1)
+	var end_candidates = nonerooms.filter(func(room): return room.connected_rooms.size() == 1 && room.connected_rooms[0].room.type != "shadow")
 	if end_candidates.size() == 0:
 		end_candidates = nonerooms.filter(func(room): return room.connected_rooms.size() == 2)
 	if end_candidates.size() == 0:
